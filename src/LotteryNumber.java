@@ -12,11 +12,11 @@ public class LotteryNumber {
         int randomInteger = 0;
 
         while(firstFive.size() < 5){
-            randomInteger = random.nextInt(68);
-            if (firstFive.contains(randomInteger+1))
+            randomInteger = random.nextInt(69)+1;
+            if (firstFive.contains(randomInteger))
                 continue;
             else
-                firstFive.add(randomInteger+1);
+                firstFive.add(randomInteger);
         }
 
         Collections.sort(firstFive);
