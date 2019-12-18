@@ -1,10 +1,5 @@
-import com.sun.source.tree.NewArrayTree;
-
-import javax.swing.*;
 import java.text.DecimalFormat;
-import java.util.Collections;
-import java.util.Random;
-import java.util.ArrayList;
+
 
 public class LotteryGenerator {
     public static void main(String[] args){
