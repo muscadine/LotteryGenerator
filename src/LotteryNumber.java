@@ -3,8 +3,8 @@ import java.util.Collections;
 import java.util.Random;
 
 public class LotteryNumber {
-    public static ArrayList<Integer> firstFive;
-    public static int powerball;
+    public  ArrayList<Integer> firstFive;
+    public  int powerball;
 
     LotteryNumber() {
         Random random = new Random();
@@ -13,32 +13,49 @@ public class LotteryNumber {
 
         while(firstFive.size() < 5){
             randomInteger = random.nextInt(68);
-            if (firstFive.indexOf(randomInteger) == -1)
+            if (firstFive.contains(randomInteger+1))
+                continue;
+            else
                 firstFive.add(randomInteger+1);
         }
 
         Collections.sort(firstFive);
-        powerball = random.nextInt(25);
+        powerball = random.nextInt(25)+1;
     }
 
-    LotteryNumber(int value){
-        firstFive= new ArrayList<Integer>();
-
-        while(firstFive.size() <5)
-            firstFive.add(value);
-        powerball=value;
-    }
-
-    public void PrintNumber(){
-        System.out.print("This is your lottery number: ");
+    public void PrintNumber(String x){
+        System.out.print(x);
         for (int value: firstFive)
             System.out.print(value +"\t");
         System.out.print(powerball+"\n");
     }
 
-    public boolean IsEqual(ArrayList<Integer> newNumbers, int pBall) {
-        if(newNumbers.equals(firstFive) || pBall==powerball) return true;
-        else
-            return false;
+    public boolean IsEqual(ArrayList<Integer> newNumbers, int pBall, int amountMatch) {
+        int matchCount = 0;
+
+        if (powerball == pBall)
+            matchCount++;
+        for(int value:firstFive) {
+            if (newNumbers.contains(value))
+                    matchCount++;
+        }
+        if (amountMatch<=matchCount)
+            return true;
+        else return false;
+    }
+    public void matching(ArrayList<Integer> newNumbers, int pBall) {
+        int matchCount = 0;
+        System.out.print("These numbers matched: ");
+        for(int value:firstFive) {
+            if (newNumbers.contains(value)) {
+                System.out.print(value + "\t");
+                matchCount++;
+            }
+        }
+        if (powerball == pBall) {
+            System.out.println("\nYour powerball " + powerball + " mached as well!");
+            matchCount++;
+        }
+
     }
 }
