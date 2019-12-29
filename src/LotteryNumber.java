@@ -45,14 +45,17 @@ public class LotteryNumber {
     }
     public void matching(ArrayList<Integer> newNumbers, int pBall) {
         System.out.print("These numbers matched: ");
+        int counter=0;
+
         for(int value:firstFive) {
             if (newNumbers.contains(value)) {
                 System.out.print(value + "\t");
+                counter++;
             }
         }
-        if (powerball == pBall) {
-            System.out.println("\nYour powerball " + powerball + " mached as well!");
-        }
+        if (powerball == pBall)
+            System.out.println(powerball+" \nYou have matched " + counter + " and the Powerball!");
+        else System.out.println("\nYou have matched " + counter + "!");
 
     }
 }
