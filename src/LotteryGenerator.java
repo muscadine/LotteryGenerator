@@ -8,7 +8,7 @@ public class LotteryGenerator {
         Instant start = Instant.now();
 
         long repetition = 1;
-        int amountMatch = 6;
+        int amountMatch = 5;
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         decimalFormat.setGroupingUsed(true);
         decimalFormat.setGroupingSize(3);
