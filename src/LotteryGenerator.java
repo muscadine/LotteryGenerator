@@ -1,9 +1,14 @@
 import java.text.DecimalFormat;
+import java.time.Duration;
+import java.time.Instant;
 
 
 public class LotteryGenerator {
     public static void main(String[] args){
+        Instant start = Instant.now();
+
         long repetition = 1;
+        int amountMatch = 6;
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         decimalFormat.setGroupingUsed(true);
         decimalFormat.setGroupingSize(3);
@@ -12,7 +17,7 @@ public class LotteryGenerator {
 
         myLotto.PrintNumber("This is your lottery number: ");
 
-        while(!myLotto.IsEqual(newNumber.firstFive, newNumber.powerball, 3)){
+        while(!myLotto.IsEqual(newNumber.firstFive, newNumber.powerball, amountMatch)){
             newNumber = new LotteryNumber();
             repetition++;
         }
@@ -20,5 +25,11 @@ public class LotteryGenerator {
 
         myLotto.matching(newNumber.firstFive, newNumber.powerball);
         System.out.println("\nThe number of times before Winning: "+decimalFormat.format(repetition));
+
+        Instant finish = Instant.now();
+        long timeElapsed = (amountMatch <6 ) ? Duration.between(start, finish).toMillis() : Duration.between(start, finish).getSeconds();
+
+        if (amountMatch <6) System.out.println("The time it takes to run is "+timeElapsed+" Millisecond");
+        else System.out.println("The time it takes to run is "+timeElapsed+" seconds");
     }
 }

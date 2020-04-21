@@ -13,9 +13,7 @@ public class LotteryNumber {
 
         while(firstFive.size() < 5){
             randomInteger = random.nextInt(69)+1;
-            if (firstFive.contains(randomInteger))
-                continue;
-            else
+            if (!firstFive.contains(randomInteger))
                 firstFive.add(randomInteger);
         }
 
